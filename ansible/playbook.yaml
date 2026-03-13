@@ -1,0 +1,22 @@
+# playbook.yaml:)
+---
+- name: Setup redis servers
+  hosts:
+    - server_role_redis_server
+  become: true
+  gather_facts: yes
+  vars:
+    ansible_user: "rocky"
+  roles: 
+    - redis_server
+
+
+- name: Setup frontend servers
+  hosts:
+    - server_role_frontend_server
+  become: true
+  gather_facts: yes
+  vars:
+    ansible_user: "admin"
+  roles:
+    - frontend_server
